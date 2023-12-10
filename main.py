@@ -12,7 +12,8 @@ running = True
 
 snake_x = random.randint(1,500)
 snake_y = random.randint(1,500)
-
+snake_x_change = 0
+snake_y_change = 0
 
 while running:
     for event in pygame.event.get():
@@ -24,13 +25,20 @@ while running:
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_LEFT]:
-        print("Left arrow key pressed")
+        snake_x_change = -5
+        snake_y_change = 0
     elif keys[pygame.K_RIGHT]:
-        print("Right arrow key pressed")
+        snake_x_change = 5
+        snake_y_change = 0
     elif keys[pygame.K_UP]:
-        print("Up arrow key pressed")
+        snake_y_change = -5
+        snake_x_change = 0
     elif keys[pygame.K_DOWN]:
-        print("Down arrow key pressed")
+        snake_y_change = 5
+        snake_x_change = 0
+
+    snake_x += snake_x_change
+    snake_y += snake_y_change
 
     pygame.display.flip()
     clock.tick(30)
